@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Poiret+One&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poiret One', sans-serif;
+ 
+}
+body {
+    font-size: 15pt;
+}
+#header{
+   color: #B0B1B3;
+}
+
+
+#header h1{
+  font-family: "Ubuntu";
+  color: #080035;
+  font-size: 2rem;
+}
+#header img{
+  width: 90%;
+  position: relative;
+  z-index: -100;
+  display: none;
+}
+#header img::before{
+  content:'';
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background: #42445A;
+  top: -500px;
+  z-index: 100;
+}
+#head{
+  height : 40vh;
+  width: 80vw;
+  background-image:linear-gradient(to top,#FEFEFE, #FFFFFF00,#FFFFFF00), url("/asset/Charity-bro.svg");
+  background-size: cover;
+}
+
+
+.cbtn{
+  border: 2px solid #0F144C;
+  outline: none;
+  background: #FFFFFF;
+  color:#0F144C;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: "Raleway";
+  transition: all 0.5s;
+}
+.cbtn:hover{
+  background: #0F144C;
+  color: #FFFFFF;
+}
+
+
+.splide__slide img{
+  width: 80%;
+  border: 1px solid rgba(66, 68, 90, 1);
+  
+}
+
+.splide{
+  text-align: center;
+}
+
+.splide__arrow{
+  background: rgba(183, 255, 204, 1);
+}
+
+
+
+
+
+@media only screen and (orientation: landscape) {
+  
+  
+  #header .row{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  #head{
+    display: none ;
+  }
+ #header img {
+   display: block;
+ }
+ 
+ 
+ 
+ 
+}

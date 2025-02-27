@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-import { Card,CardContent,CardTitle,CardDescription,CardHeader } from '@/components/ui/card'
-import { PhoneIcon,MailIcon,FacebookIcon} from 'lucide-react'
+
+import { PhoneIcon,MailIcon,FacebookIcon,MapPinIcon} from 'lucide-react'
+import ReachUsForm from './Form'
 
 export default function Body() {
   return (
@@ -116,6 +117,31 @@ export default function Body() {
 
               </div>
               <Button className="mt-10" variant="link" >know more about our team <ArrowRight /> </Button>
+          </section>
+          <section id='feedbac' className='mt-20 bg-gradient-to-b from-orange-500 from-50% to-white to-50% py-4 border w-full'>
+          
+            <div className='grid md:grid-cols-2 '>
+                <div className='flex flex-col align-middle justify-evenly items-center pb-8'>
+                   <div className=' w-2/3 p-4 text-center md:text-left'>
+                    <h2 className='text-white font-bold text-4xl mb-4 '>Get In Touch</h2>
+                    <p className='text-white'>Feel free to contact us. Submit your queries here and we will get back to you as soon as possible </p>
+
+                   </div>
+                   <div className='w-2/3 hidden overflow-x-visible pl-4 md:flex flex-col gap-4'>
+                    <p className='inline-flex gap-4 text-lg '><PhoneIcon  /> 8392064368</p>
+                    <p className='inline-flex gap-3 overflow-x-visible flex-nowrap text-lg '><MailIcon /> swamijitrust@gmail.com</p>
+                    <p className='inline-flex gap-4 text-lg '><MapPinIcon  /> Bogra Colony, Asansol</p>
+
+                   </div>
+
+                </div>
+                <div className='text-center p-4 '>
+                    
+                    <ReachUsForm />
+
+                </div>
+            </div>
+
           </section>
     </>
   )

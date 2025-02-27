@@ -7,8 +7,8 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className=' pt-20 md:pt-4 min-h-[60vh] w-full flex justify-between  '>
-        <div className='flex flex-col justify-center text-left items-center flex-1 px-4 '>
+    <section className=' pt-20 md:pt-4 min-h-[60vh] w-full flex justify-between '>
+        <div className='flex flex-col justify-center text-left items-center flex-1 px-4 w-full'>
             <h1 className='text-5xl font-bold text-center lg:text-6xl '>Bring <span className='text-orange-500'>Smiles</span> and Change Lives!</h1>
             <h4 className='text-lg md:font-semibold text-center mt-5 mb-3 text-gray-600 p lg:px-4  xl:px-40'>Your support can light up lives and create lasting change. By contributing, you help provide education, healthcare, and opportunities to those in need empowering individuals and building stronger, happier communities</h4>
             <div className=' w-full flex gap-4 align-middle items-center justify-center mt-6'>
@@ -31,7 +31,7 @@ export default function Hero() {
 
             </div>
         </div>
-        <div className=' h-[85vh] w-[400px] flex-none p-0 hidden lg:block overflow-hidden'>
+        <div className=' h-[85vh] w-[400px] flex-none  p-0 hidden lg:flex '>
         
         <AspectRatio ratio={9/16} >
             <Image

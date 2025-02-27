@@ -67,6 +67,7 @@
   /* Text color for contrast */
 }
 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

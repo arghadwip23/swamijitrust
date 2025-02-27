@@ -19,7 +19,7 @@ export default function Navb() {
     const path = usePathname(); // ✅ Directly use usePathname
 
     return (
-        <div className='flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-[2px] w-full'>
+        <div className='flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-lg  w-full'>
             <Image
                 src="/swamijiLogo.png"
                 alt="Logo"

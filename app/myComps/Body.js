@@ -98,7 +98,7 @@ export default function Body() {
 
                           <div className='bg-orange-500 w-full aspect-[5/2] rounded-t-lg relative'>
                               <div className='bg-white rounded-[50%] p-1 top-[60%]  left-[50%] absolute translate-x-[-50%] '>
-                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="/raju.png" className='rounded-[50%] bg-gray-400 ' />
+                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/teamMembers/1733204082674-1.png" className='rounded-[50%] bg-gray-400 ' />
                               </div>
                           </div>
                           <div className='text-center mt-20'>
@@ -118,10 +118,10 @@ export default function Body() {
               </div>
               <Button className="mt-10" variant="link" >know more about our team <ArrowRight /> </Button>
           </section>
-          <section id='feedbac' className='mt-20 bg-gradient-to-b from-orange-500 from-50% to-white to-50% py-4 border w-full'>
+          <section id='feedbac' className='mt-20 lg:mx-4 lg:rounded-md md:pr-4 bg-gradient-to-b from-orange-500 from-50% to-white to-50% py-4 border w-full'>
           
             <div className='grid md:grid-cols-2 '>
-                <div className='flex flex-col align-middle justify-evenly items-center pb-8'>
+                <div className='flex flex-col align-middle justify-evenly items-center md:pb-8'>
                    <div className=' w-2/3 p-4 text-center md:text-left'>
                     <h2 className='text-white font-bold text-4xl mb-4 '>Get In Touch</h2>
                     <p className='text-white'>Feel free to contact us. Submit your queries here and we will get back to you as soon as possible </p>

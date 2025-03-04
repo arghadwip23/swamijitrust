@@ -11,7 +11,7 @@ export default function Hero() {
         <div className='flex flex-col justify-center text-left items-center flex-1 px-4 w-full'>
             <h1 className='text-5xl font-bold text-center lg:text-6xl '>Bring <span className='text-orange-500'>Smiles</span> and Change Lives!</h1>
             <h4 className='text-lg md:font-semibold text-center mt-5 mb-3 text-gray-600 p lg:px-4  xl:px-40'>Your support can light up lives and create lasting change. By contributing, you help provide education, healthcare, and opportunities to those in need empowering individuals and building stronger, happier communities</h4>
-            <div className=' w-full flex gap-4 align-middle items-center justify-center mt-6'>
+            <div className=' w-full flex gap-4 align-middle items-center justify-center mt-6  pl-6'>
             <Button size="lg" className="text-lg">Get started</Button>
             <Button size="lg" variant="link" className="text-lg underline">second action <ArrowRight className='text-xl' size={30} /> </Button>
             </div>

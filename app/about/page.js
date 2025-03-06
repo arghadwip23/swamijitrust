@@ -9,25 +9,17 @@ export default function AboutPage() {
   return (
     <div className="w-full min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center bg-orange-200">
-        <div className="absolute inset-0">
-          <Image
-            src="/banner3.png" // Replace with your actual image
-            alt="About Swamiji Trust"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-30"
-          />
-        </div>
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl lg:text-6xl md:text-5xl font-bold text-orange-500">
-            About Us
-          </h1>
-          <p className="text-lg text-gray-700 px-4 mt-2 lg:mx-20 lg:px-20">
-          We are a passionate team dedicated to making a difference in the lives of underprivileged children through education, healthcare, and support.
-          </p>
-        </div>
-      </section>
+      <header className='flex flex-col md:flex-row w-full px-4 py-2  lg:px-20 pt-20 bg-gray-100'>
+              <div className='text-center  md:text-left px-4 flex flex-col justify-center flex-1 md:basis-1/2 lg:pl-10'>
+                <h1 className='text-3xl font-bold lg:text-5xl'>About Us</h1>
+                <p className='text-gray-500 mt-3 lg:pr-20'>Meet our our enthusiast and active team membrs. the soul of our ngo , They have always given their best for the uplift of the socity,#f97316Volunteer for India aims to uplift the underprivileged population and solve pertinent social issues affecting the city through structured volunteering programs. </p>
+        
+              </div>
+              <div className=" flex-2 md:flex-1/2">
+               <Image width={500} height={500} alt='hero svg image' src="/about.svg" className='mx-auto p-10' />
+              </div>
+        
+            </header>
 
       {/* About Content */}
       <section className="max-w-5xl mx-auto px-6 lg:px-20 py-10">

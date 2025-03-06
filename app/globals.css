@@ -71,6 +71,15 @@
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.393) inset,-10px -10px 20px 0 rgba(0, 0, 0, 0.393) inset;
 }
 
+.n{
+  /* background: linear-gradient(to top, #060202, #f0f0f000); */
+  background-size: contain;
+  background-position: top;
+  mask-image: url(/mask3.png);
+  mask-size: cover;
+  
+}
+
 .grid-container {
   columns: 5 200px;
   column-gap: 1.5rem;
@@ -101,6 +110,8 @@
       border-radius: 5px;
       transition: all .25s ease-in-out;
     }
+
+    
 
 
 @layer base {

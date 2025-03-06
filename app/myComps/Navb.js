@@ -11,7 +11,7 @@ import { DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuGroup,
 const navdata = [
     { id: 1, name: 'Home', link: '/', icon: <House className="mr-2" /> },
     { id: 2, name: 'Events', link: '/events', icon: <House className="mr-2" /> },
-    { id: 3, name: 'Products', link: '/products', icon: <House className="mr-2" /> },
+    { id: 3, name: 'Volunteers', link: '/volunteers', icon: <House className="mr-2" /> },
     { id: 4, name: 'About', link: '/about', icon: <ShoppingCart className="mr-2" /> },
     { id: 5, name: 'Contact', link: '/contact', icon: <House className="mr-2" /> },
 ]

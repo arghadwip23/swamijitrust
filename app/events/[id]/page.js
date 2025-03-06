@@ -7,7 +7,7 @@ import { MapPinIcon,CalendarDaysIcon} from 'lucide-react';
 
 
 
-export default function page({params}) {
+export default async function page({params}) {
   const demoData = {
     "id": "1",
     "name": "Animal rescue event",
@@ -17,6 +17,7 @@ export default function page({params}) {
     "description": "loremimpusp dolor sit amet, consectetur adipiscing elit. Nulla nec purus euismod, fermentum nunc nec, ultricies nunc",
     "thumbnail": "/childrenCr.jpg",
   };
+  const {id} = await params;
   return (
     <section className='pt-20'>
       <Breadcrumb className='px-4 mb-4 '>
@@ -30,11 +31,11 @@ export default function page({params}) {
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbPage>{params.id}</BreadcrumbPage>
+      <BreadcrumbPage>{id}</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>
-      <div className='header grid grid-cols-1 md:grid-cols-2 gap-2 px-4 '>
+      <div className='header grid grid-cols-1 md:grid-cols-2 gap-2 px-4 mb-10 '>
         <AspectRatio ratio={16/9} className='p-4 rounded cover'>
           <Image src={demoData.thumbnail} alt={demoData.name} fill  className='object-cover h-full w-full rounded-md bg-yellow-500 ' />
         </AspectRatio>
@@ -47,7 +48,11 @@ export default function page({params}) {
 
 
       </div>
-      <div className="grid-container pt-4">
+  
+      <h2 className='px-4 text-center py-5 text-3xl font-bold'>Glimpses of the event</h2>
+      
+  <div className="grid-container ">
+     
   <div className='shadow-lg'>
     <img className='grid-item grid-item-1' src='https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
     <p>"I'm so happy today!"</p>

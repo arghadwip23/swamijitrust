@@ -96,7 +96,7 @@ export default function Body() {
                   <div >
                       <div className='bg-white w-[200px] shadow-xl aspect-[2/2.7] rounded-lg mx-auto'>
 
-                          <div className='bg-orange-500 w-full aspect-[5/2] rounded-t-lg relative'>
+                          <div className='bg-orange-500 w-full aspect-[10/4] rounded-t-lg relative'>
                               <div className='bg-white rounded-[50%] p-1 top-[60%]  left-[50%] absolute translate-x-[-50%] '>
                                   <Image width={200} height={200} alt='Photo of raju Roy ' src="https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/teamMembers/1733204082674-1.png" className='rounded-[50%] bg-gray-400 ' />
                               </div>

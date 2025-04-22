@@ -53,13 +53,13 @@ export default async function page({params}) {
       
   <div className="grid-container ">
      
-  <div className='shadow-lg'>
-    <img className='grid-item grid-item-1' src='https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"I'm so happy today!"</p>
+  <div className='shadow-lg p-0 border-none'>
+    <img className='grid-item grid-item-1' src='https://picsum.photos/1080/1920' alt=''/>
+    
   </div>
   <div>
-    <img className='grid-item grid-item-2' src='https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"I see those nugs."</p>
+    <img className='grid-item grid-item-2' src='https://picsum.photos/400/300' alt=''/>
+    
   </div>
   <div>
     <img className='grid-item grid-item-3' src='https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>

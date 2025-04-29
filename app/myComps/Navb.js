@@ -19,7 +19,7 @@ const navdata = [
 const customEvents = ["abc","education","cloth distrubustion","foood distribution"];
 
 export default function Navb() {
-    const path = usePathname(); // ✅ Directly use usePathname
+    const path = usePathname(); // ✅ Directly use usePathname`
 
     return (
         <div className='flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-lg  w-full'>

@@ -6,13 +6,13 @@ import { NextResponse } from 'next/server';
 function getRole(code){
     switch (code) {
         case process.env.ADMIN:
-            return {role: "admin", position: "chairman"};
+            return {isAdmin: true, position: "chairman"};
         case process.env.TRESURER: 
-            return {role: "admin", position: "tresurer"};
+            return {isAdmin: true, position: "tresurer"};
         case process.env.VOLUNTEER:
-            return {role: "member", position: "volunteer"}; 
+            return {isAdmin: false , position: "volunteer"}; 
         case process.env.SECRETARY: 
-            return {role: "admin", position: "secretary"};
+            return { isAdmin: true, position: "secretary"};
 
 }
 }

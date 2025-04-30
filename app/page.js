@@ -5,6 +5,8 @@ import Hero from "./myComps/Hero";
 import Crousel from "./myComps/Crousel";
 import Why from "./myComps/Why";
 import Body from "./myComps/Body";
+
+
 export default function Home() {
   return (
     <>

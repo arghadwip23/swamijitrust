@@ -37,7 +37,7 @@ export default function LoginPage() {
 
   return (
     <div className="py-20">
-    <section className=" w-[300] md:w-[500]  mx-auto p-6  mt-20 shadow-md rounded-lg shadow">
+    <section className=" w-[300] md:w-[500]  mx-auto p-6  mt-20 shadow-md rounded-lg">
       <h1 className="text-xl font-bold mb-6 text-center text-orange-600">Login to Swamiji Trust</h1>
       <form onSubmit={handleLogin} className="space-y-4">
         <div>

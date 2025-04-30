@@ -1,7 +1,7 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import { House, ShoppingCart, Menu ,ChevronDown} from 'lucide-react' // ✅ Correct icon imports
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -19,6 +19,31 @@ const navdata = [
 const customEvents = ["abc","education","cloth distrubustion","foood distribution"];
 
 export default function Navb() {
+    const [loggedin,setLoggedin] = useState(false);
+    useEffect(() => {
+        const fetchLoginInfo = async () => {
+            try {
+              const loginInfo = await fetch('/api/sentNavData', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                },
+              });
+              const data = await loginInfo.json();
+              console.log(data); // Do something with the data
+              setLoggedin(data.isLoggedin);
+              console.log(loggedin," ",data.isLoggedin);
+
+            } catch (err) {
+              console.error('Error fetching login info:', err);
+            }
+          };
+        
+          fetchLoginInfo();
+          
+      }, []);
+
     const path = usePathname(); // ✅ Directly use usePathname`
 
     return (
@@ -52,7 +77,11 @@ export default function Navb() {
                                                 ))
 
                                             }
+                                           
+                                                
+                                        
                                         </DropdownMenuGroup>
+                                        
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                            
@@ -66,7 +95,14 @@ export default function Navb() {
                             </li>
                             
 
-                    ))}
+                    ))}{
+                        loggedin && <li className={`px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2 
+                            `}>
+                            <Link href="/logout" className='flex items-center'>  
+                                    Logout
+                                </Link>
+                        </li>
+                    }
                 </ul>
             </nav>
 
@@ -115,7 +151,14 @@ export default function Navb() {
                             </li>
                             
 
-                    ))}
+                    ))}{
+                        loggedin && <li className={`px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2 
+                            `}>
+                            <Link href="/logout" className='flex items-center'>  
+                                    Logout
+                                </Link>
+                        </li>
+                    }
                         </ul>
                     </nav>
                 </SheetContent>

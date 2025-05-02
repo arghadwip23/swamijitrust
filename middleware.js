@@ -15,11 +15,11 @@ export function middleware(request) {
     return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
   }
 
-  // if (!isPublicPath && !token) {
-  //   return NextResponse.redirect(new URL('/login', request.nextUrl));
-  // }
+   if (path=="/dashboard" && !token) {
+     return NextResponse.redirect(new URL('/login', request.nextUrl));
+   }
 }
 
 export const config = {
-  matcher: ['/', '/profile', '/login', '/signup', '/verifyemail'],
+  matcher: ['/', '/profile', '/login', '/signup', '/verifyemail',"/dashboard"],
 };

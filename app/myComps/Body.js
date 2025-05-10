@@ -82,7 +82,7 @@ export default function Body() {
                               </div>
                           </div>
                           <div className='text-center mt-20'>
-                              <h4 className='font-semibold text-lg'>Mr Malay Dhar</h4>
+                              <h4 className='font-semibold text-lg'>Malay Dhar</h4>
                               <p className='text-gray-400 text-sm'>Chairman</p>
 
                           </div>
@@ -102,8 +102,8 @@ export default function Body() {
                               </div>
                           </div>
                           <div className='text-center mt-20'>
-                              <h4 className='font-semibold text-lg'>Raju Roy</h4>
-                              <p className='text-gray-400 text-sm'>Chairman</p>
+                              <h4 className='font-semibold text-lg'>Dipanjan Karmakar</h4>
+                              <p className='text-gray-400 text-sm'>treasurer</p>
 
                           </div>
                           <div className=' flex justify-evenly mt-4'>

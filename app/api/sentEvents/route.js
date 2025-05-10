@@ -17,7 +17,9 @@ export async function GET(req) {
     }
     let data = await collection.find({}).toArray();
     data.forEach((event) => {
-        result[event.eventType].push(event.eventName);
+        result[event.eventType].push({"name":event.eventName,"id":event._id});
+        // console.log(result[event.eventType],event);
+        
 
     });
 

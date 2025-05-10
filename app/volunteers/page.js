@@ -2,8 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import { Breadcrumb,BreadcrumbItem,BreadcrumbLink,BreadcrumbSeparator,BreadcrumbPage,BreadcrumbList } from '@/components/ui/breadcrumb';
 import Profile from '../myComps/Profile';
+import { getVolunteer } from '@/lib/Actions';
 
-export default function page() {
+export default async function page() {
 
 const demo =[
   {
@@ -25,6 +26,8 @@ const demo =[
     image:'https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/teamMembers/1733204082674-1.png'
   }
 ];
+const leaders = await getVolunteer(true);
+const members = await getVolunteer(false);
 
   return (
     <>
@@ -55,25 +58,23 @@ const demo =[
         <h2 className='px-5 md:px-20 text-2xl font-semibold'>our leaders:</h2>
         <div className='leaders grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-20'>
           {
-            demo.map((item,index)=>(
-              <Profile key={index} name={item.name} position={item.position} category={item.category} image={item.image} />
+            leaders.map((item,index)=>(
+              <Profile key={index} name={item.name} position={item.position} email={item.email} image={item.image}  />
             ))
 }
 
         </div>
        </section>
-       <section className='mt-10 bg-orange-50 py-10'>
-        <h2 className='px-5 md:px-20 text-2xl font-semibold'>our members:</h2>
+       <section className='mt-10 py-10'>
+        <h2 className='px-5 md:px-20 text-2xl font-semibold mb-3'>our members:</h2>
         <div className='leaders grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-20'>
           {
-            demo.map((item,index)=>(
-              <Profile key={index} name={item.name} position={item.position} category={item.category} image={item.image} />
+            members.map((item,index)=>(
+              <Profile key={index} name={item.name} position={item.position} email={item.email} image={item.image} />
             ))
 }
 {
-            demo.map((item,index)=>(
-              <Profile key={index} name={item.name} position={item.position} category={item.category} image={item.image} />
-            ))
+            
 }
         </div>
        </section>

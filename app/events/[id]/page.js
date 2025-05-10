@@ -1,25 +1,58 @@
-'use clients'
-import React from 'react'
+'use client'
+
+import React,{ useState,useEffect } from 'react';
 import { Breadcrumb,BreadcrumbItem,BreadcrumbLink,BreadcrumbSeparator,BreadcrumbPage,BreadcrumbList } from '@/components/ui/breadcrumb';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Image from 'next/image';
 import { MapPinIcon,CalendarDaysIcon} from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
 
-export default async function page({params}) {
+
+
+export default function Event({ params }) {
+  const [eventData, setEventData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const { id } = React.use(params); // ✅ unwrap the Promise
+
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        const res = await fetch(`/api/${id}`);
+        if (!res.ok) {
+          throw new Error('Failed to fetch event data');
+        }
+        const data = await res.json();
+        setEventData(data);
+      } catch (error) {
+        console.error('Error fetching event data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchEventData();
+    }
+  }, [id]);
+
+  // Replace with eventData once API integration is confirmed working
   const demoData = {
-    "id": "1",
-    "name": "Animal rescue event",
-    "start": "2022-01-01",
-    "end": "2022-01-01",
-    "location": "Asansol, West Bengal",
-    "description": "loremimpusp dolor sit amet, consectetur adipiscing elit. Nulla nec purus euismod, fermentum nunc nec, ultricies nunc",
-    "thumbnail": "/childrenCr.jpg",
+    id: '1',
+    name: 'Animal rescue event',
+    start: '2022-01-01',
+    end: '2022-01-01',
+    location: 'Asansol, West Bengal',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus euismod, fermentum nunc nec, ultricies nunc',
+    thumbnail: '/childrenCr.jpg',
   };
-  const {id} = await params;
+
   return (
-    <section className='pt-20'>
+    !loading&&eventData?<section className='pt-20'>
+      
       <Breadcrumb className='px-4 mb-4 '>
   <BreadcrumbList>
     <BreadcrumbItem>
@@ -31,19 +64,19 @@ export default async function page({params}) {
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbPage>{id}</BreadcrumbPage>
+      <BreadcrumbPage>{eventData.eventName}</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>
       <div className='header grid grid-cols-1 md:grid-cols-2 gap-2 px-4 mb-10 '>
         <AspectRatio ratio={16/9} className='p-4 rounded cover'>
-          <Image src={demoData.thumbnail} alt={demoData.name} fill  className='object-cover h-full w-full rounded-md bg-yellow-500 ' />
+          <Image src={eventData.eventThumbnail} alt={eventData.eventName} fill  className='object-cover h-full w-full rounded-md bg-yellow-500 ' />
         </AspectRatio>
         <div className='text-left p-4 flex md:justify-center flex-col items-start '>
-        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-left'>{demoData.name}</h2>
-        <p className='text-left mt-4 text-gray-500 flex gap-2'><MapPinIcon />{demoData.location}</p>
-        <p className='text-left mt-4 text-gray-500 flex gap-2'><CalendarDaysIcon />{demoData.start}{demoData.end&&" to "+demoData.end}</p>
-        <p className='text-left mt-4'>{demoData.description}</p>
+        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-left'>{eventData.eventName}</h2>
+        <p className='text-left mt-4 text-gray-500 flex gap-2'><MapPinIcon />{eventData.eventLocation}</p>
+        <p className='text-left mt-4 text-gray-500 flex gap-2'><CalendarDaysIcon />{eventData.eventSDate}{eventData.eventFDate&&" to "+eventData.eventFDate}</p>
+        <p className='text-left mt-4'>{eventData.eventDescription}</p>
       </div>
 
 
@@ -52,49 +85,26 @@ export default async function page({params}) {
       <h2 className='px-4 text-center py-5 text-3xl font-bold'>Glimpses of the event</h2>
       
   <div className="grid-container ">
-     
-  <div className='shadow-lg p-0 border-none'>
-    <img className='grid-item grid-item-1' src='https://picsum.photos/1080/1920' alt=''/>
-    
+   {
+    eventData.images.map((img, index) => (
+      <div className='shadow-lg p-0 border-none' key={index}>
+      <img className='grid-item grid-item-1' src={img.url} alt=''/>
+     <p>{img.caption}</p>
   </div>
-  <div>
-    <img className='grid-item grid-item-2' src='https://picsum.photos/400/300' alt=''/>
-    
-  </div>
-  <div>
-    <img className='grid-item grid-item-3' src='https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"I love you so much!"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-4' src='https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"I'm the baby of the house!"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-5' src='https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"Are you gunna throw the ball?"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-6' src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"C'mon friend!"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-7' src='https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"A rose for mommy!"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-8' src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"You gunna finish that?"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-9' src='https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"We can't afford a cat!"</p>
-  </div>
-  <div>
-    <img className='grid-item grid-item-10' src='https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''/>
-    <p>"Dis my fren!"</p>
-  </div>
+
+    ))
+   }
 </div>
-      
-    </section>
+
+    </section>:<section>
+      <div className='flex justify-center items-center h-screen p-4'>
+        <DotLottieReact
+      src="https://lottie.host/8c7e4ef0-08e0-4929-9b3f-ddc54f68f9fc/m1fm3AsKmh.lottie"
+      loop
+      autoplay
+      className=' w-[400] p-0 md:w-[600px] lg:w-[800px] '
+    />
+      </div>
+    </section> 
   )
 }

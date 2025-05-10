@@ -1,7 +1,8 @@
 // app/api/events/route.js (or route.ts)
 import { NextRequest, NextResponse } from 'next/server'
-import { supabaseAdmin } from '@/lib/supabaseAdmin'
+//import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import clientPromise from '@/lib/mongodb'
+import { uploadImg } from '@/lib/SupaBase'
 
 export async function POST(req) {
   try {
@@ -21,29 +22,11 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Thumbnail is required' }, { status: 400 })
     }
 
-    // Convert Blob to Buffer
-    const arrayBuffer = await file.arrayBuffer()
-    const buffer = Buffer.from(arrayBuffer)
-    const filename = `events/${Date.now()}-${file.name}`
-
-    // Upload to Supabase
-    const { data: uploadData, error: uploadError } = await supabaseAdmin.storage
-      .from('eventgallery')
-      .upload(filename, buffer, { contentType: file.type })
-
-    if (uploadError) {
-      return NextResponse.json({ message: 'Image upload failed' }, { status: 500 })
+    
+    const uploadStat = await uploadImg(file, 'thumbnails');
+    if (!uploadStat.ok) {
+      return NextResponse.json({ message: 'Image upload failed' }, { status: 400 })
     }
-
-    const { publicUrl } = supabaseAdmin.storage
-      .from('eventgallery')
-      .getPublicUrl(filename).data
-
-    if (!publicUrl) {
-      return NextResponse.json({ message: 'Failed to get public URL' }, { status: 500 })
-    }
-
-    // Save event data to MongoDB
     const eventDoc = {
       eventName,
       eventSDate,
@@ -51,7 +34,7 @@ export async function POST(req) {
       eventLocation,
       eventType,
       eventDescription,
-      eventThumbnail: publicUrl,
+      eventThumbnail: uploadStat.message,
       createdAt: new Date(),
     }
 

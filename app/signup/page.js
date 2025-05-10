@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export default function SignUp() {
     code:""
   });
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code")||"";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,6 +112,7 @@ export default function SignUp() {
               type="text"
               name="text"
               placeholder="Enter the invitation code"
+              value={code}
               required
               onChange={(e) =>
                 setFormData({ ...formData, code: e.target.value })

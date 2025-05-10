@@ -106,8 +106,8 @@ export default function Navb() {
                             <DropdownMenuSubContent className="bg-white z-50 p-2 border">
                               {events[category]?.map((eventObj,index) => (
                                 <DropdownMenuItem key={index}>
-                                  <Link href={`/events/${eventObj}`}>
-                                    {eventObj}
+                                  <Link href={`/events/${eventObj.id}`}>
+                                    {eventObj.name}
                                   </Link>
                                 </DropdownMenuItem>
                               ))}
@@ -171,9 +171,9 @@ export default function Navb() {
                               <DropdownMenuPortal>
                                 <DropdownMenuSubContent className="bg-white z-50 p-2 border">
                                   {events[category]?.map((eventObj) => (
-                                    <DropdownMenuItem key={eventObj.eventName}>
-                                      <Link href={`/events/${eventObj.eventName}`}>
-                                        {eventObj.eventName}
+                                    <DropdownMenuItem key={eventObj.id}>
+                                      <Link href={`/events/${eventObj.id}`}>
+                                        {eventObj.name}
                                       </Link>
                                     </DropdownMenuItem>
                                   ))}

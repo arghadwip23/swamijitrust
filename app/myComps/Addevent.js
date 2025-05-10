@@ -61,7 +61,7 @@ export default function Addevent({ user, role }) {
   return (
     <section>
      <form onSubmit={handleSubmit} className="p-2">
-  <h1 className="font-semibold text-3xl">Add New Events</h1>
+  
 
   <div className="mt-2">
     <Label htmlFor="eventName">Event Name</Label>
@@ -90,7 +90,7 @@ export default function Addevent({ user, role }) {
       type="date"
       id="eventFDate"
       placeholder="Select the finish date"
-      required
+    
       onChange={(e) => setFormdata({ ...formdata, eventFDate: e.target.value })}
     />
   </div>

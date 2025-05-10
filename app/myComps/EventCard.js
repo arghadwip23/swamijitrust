@@ -4,7 +4,7 @@ import { ArrowRightIcon } from 'lucide-react'
 
 export default function EventCard({id,name,description ,thumbnail}) {
   return (
-    <div className='bg-orange-500  rounded my-4 size-80 mx-auto  relative shadow-md'>
+    <div className='bg-orange-500  rounded my-4 size-80 mx-auto  relative shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out'>
     <div  className={`size-80  mx-auto shadow-md rounded bg-muted n absolute`}
      style={{
         backgroundImage: `linear-gradient(to top, #060202, #f0f0f000),url("${thumbnail}")`,

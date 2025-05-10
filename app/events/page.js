@@ -2,10 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import { Breadcrumb,BreadcrumbItem,BreadcrumbLink,BreadcrumbSeparator,BreadcrumbPage,BreadcrumbList } from '@/components/ui/breadcrumb';
 import EventCard from '../myComps/EventCard';
+import { getEvents } from '@/lib/Actions';
 
 import Link from 'next/link';
 
-export default function page() {
+export default async function page() {
 const dummyData=[
   {
     "_id": "1",
@@ -32,7 +33,7 @@ const dummyData=[
     "thumbnail": "https://picsum.photos/700",
   }
 ];
-
+const Data = await getEvents();
 
   return (
     <>
@@ -62,8 +63,8 @@ const dummyData=[
    <section>
     
     <div className='grid  px-4 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-3  w-full overflow-x-hidden lg:px-20'>
-      {dummyData.map((event)=>(
-        <EventCard key={event._id} id={event._id} name={event.name} description={event.description} thumbnail={event.thumbnail} />
+      {Data.map((event)=>(
+        <EventCard key={event._id} id={event._id} name={event.name} description={event.description} thumbnail={event.thumbnail}  />
       ))}
 
     </div>

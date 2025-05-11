@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import LoadingScreen from "../myComps/LoadingScreen";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -71,6 +73,7 @@ export default function SignUp() {
   };
 
   return (
+    <Suspense fallback={<LoadingScreen/ >}>
     <section className="p-4">
       <div className="mt-20 p-4">
         
@@ -155,5 +158,7 @@ export default function SignUp() {
       </div>
       <Toaster position="top-center" />
     </section>
+    </Suspense>
+
   );
 }

@@ -1,128 +1,133 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { toast } from "react-hot-toast";
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
+import { Input } from '@/components/ui/input';
+
+
+
 
 export default function UploadImage() {
-  const [eventName, setEventName] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState("");
-  const [caption, setCaption] = useState("");
-  const [image, setImage] = useState(null);
+  const [eventOptions, setEventOptions] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState('');
+  const [caption, setCaption] = useState('');
+  const [images, setImages] = useState([]);
   const [uploading, setUploading] = useState(false);
 
-  // Fetch event types on mount
   useEffect(() => {
-    const fetchEventTypes = async () => {
+    async function fetchEvents() {
       try {
-        const res = await fetch("/api/sentEvents");
+        const res = await fetch('/api/sentEvents');
         const data = await res.json();
-        
-        setEventName([...data.Education, ...data.Sports, ...data.Health, ...data.Awarness, ...data.Social, ...data.Other]);
+        const allEvents = [
+          ...data.Education,
+          ...data.Sports,
+          ...data.Health,
+          ...data.Awarness,
+          ...data.Social,
+          ...data.Other,
+        ];
+        setEventOptions(allEvents);
       } catch (err) {
-        toast.error("Failed to fetch event types");
         console.error(err);
+        toast.error('Failed to fetch event types');
       }
-    };
-    fetchEventTypes();
+    }
+    fetchEvents();
   }, []);
 
+  const handleImageChange = (e) => {
+    if (e.target.files.length > 0) {
+      setImages(Array.from(e.target.files));
+    }
+  };
+
   const handleSubmit = async () => {
-    if (!selectedEvent || !image) {
-      toast.error("Please select an event type and image.");
+    if (!selectedEvent || images.length === 0) {
+      toast.error('Please select an event and at least one image.');
       return;
     }
 
     const formData = new FormData();
-    formData.append("eventname", selectedEvent);
-    formData.append("caption", caption);
-    formData.append("image", image);
+    formData.append('eventname', selectedEvent);
+    formData.append('caption', caption);
+    images.forEach((file) => {
+      formData.append('images', file);
+    });
 
     try {
       setUploading(true);
-      const res = await fetch("/api/uploadImage", {
-        method: "POST",
+      const res = await fetch('/api/uploadImage', {
+        method: 'POST',
         body: formData,
       });
 
       const result = await res.json();
       if (res.ok) {
-        toast.success("Image uploaded successfully!");
-        setCaption("");
-        setSelectedEvent("");
-        setImage(null);
+        toast.success('Images uploaded successfully!');
+        setSelectedEvent('');
+        setCaption('');
+        setImages([]);
       } else {
-        toast.error(result.message || "Upload failed.");
+        toast.error(result.message || 'Upload failed');
       }
     } catch (err) {
-      toast.error("An error occurred during upload.");
       console.error(err);
+      toast.error('An error occurred during upload');
     } finally {
       setUploading(false);
     }
   };
 
   return (
-    <div >
-     
-
-      <div className="mt-2">
-        <Label htmlFor="eventType">Event Type*</Label>
-        <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-          <SelectTrigger id="eventType">
-            <SelectValue placeholder="Select event type" />
-          </SelectTrigger>
-          <SelectContent>
-            {eventName.map((type,index) => (
-              <SelectItem key={index} value={type.id}>
-                {type.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+    <div className="p-4">
+      <div className="mb-4">
+        <label htmlFor="eventType">Event Type*</label>
+        <select
+          id="eventType"
+          value={selectedEvent}
+          onChange={(e) => setSelectedEvent(e.target.value)}
+          className="block w-full border p-2"
+        >
+          <option value="">Select event type</option>
+          {eventOptions.map((event) => (
+            <option key={event.id} value={event.id}>
+              {event.name}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="mt-4">
-        <Label htmlFor="caption">Caption</Label>
-        <Textarea
+      <div className="mb-4">
+        <label htmlFor="caption">Caption</label>
+        <textarea
           id="caption"
-          placeholder="Enter the caption"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
+          placeholder="Enter caption"
+          className="w-full border p-2"
         />
       </div>
 
-      <div className="mt-4">
-        <Label htmlFor="image">Select Image*</Label>
+      <div className="mb-4">
+        <label htmlFor="images">Select Images*</label>
         <Input
-          id="image"
+          id="images"
           type="file"
+          multiple
           accept="image/*"
-          onChange={(e) => {
-            if (e.target.files?.[0]) {
-              setImage(e.target.files[0]);
-            }
-          }}
+          onChange={handleImageChange}
+          className="block w-full"
         />
       </div>
 
-      <Button
+      <button
         onClick={handleSubmit}
-        className="mt-4 w-full"
         disabled={uploading}
+        className="w-full bg-blue-600 text-white py-2"
       >
-        {uploading ? "Uploading..." : "Upload"}
-      </Button>
+        {uploading ? 'Uploading...' : 'Upload'}
+      </button>
     </div>
   );
 }

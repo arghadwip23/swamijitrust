@@ -16,7 +16,13 @@ export async function GET(req) {
         Other: [],
     }
     let data = await collection.find({}).toArray();
+    if (!data || data.length === 0) {
+        return NextResponse.json({ message: 'No events found' }, { status: 404 });
+    }
+    console.log(data);
+    
     data.forEach((event) => {
+
         result[event.eventType].push({"name":event.eventName,"id":event._id});
         // console.log(result[event.eventType],event);
         

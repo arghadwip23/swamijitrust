@@ -58,7 +58,7 @@ export default function Body() {
 
                           <div className='bg-orange-500 w-full aspect-[5/2] rounded-t-lg relative'>
                               <div className='bg-white rounded-[50%] p-1 top-[60%]  left-[50%] absolute translate-x-[-50%] '>
-                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="/raju.png" className='rounded-[50%] bg-gray-400 ' />
+                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="https://jocwcbzjqdlxytdxfdnl.supabase.co/storage/v1/object/public/eventgallery/profilePics/18.png" className='rounded-[50%] bg-gray-400 ' />
                               </div>
                           </div>
                           <div className='text-center mt-20'>
@@ -78,12 +78,12 @@ export default function Body() {
 
                           <div className='bg-orange-500 w-full aspect-[5/2] rounded-t-lg relative'>
                               <div className='bg-white rounded-[50%] p-1 top-[60%]  left-[50%] absolute translate-x-[-50%] '>
-                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="/raju.png" className='rounded-[50%] bg-gray-400 ' />
+                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="https://jocwcbzjqdlxytdxfdnl.supabase.co/storage/v1/object/public/eventgallery/profilePics/19.png" className='rounded-[50%] bg-gray-400 ' />
                               </div>
                           </div>
                           <div className='text-center mt-20'>
                               <h4 className='font-semibold text-lg'>Malay Dhar</h4>
-                              <p className='text-gray-400 text-sm'>Chairman</p>
+                              <p className='text-gray-400 text-sm'>Secretary</p>
 
                           </div>
                           <div className=' flex justify-evenly mt-4'>
@@ -98,12 +98,12 @@ export default function Body() {
 
                           <div className='bg-orange-500 w-full aspect-[10/4] rounded-t-lg relative'>
                               <div className='bg-white rounded-[50%] p-1 top-[60%]  left-[50%] absolute translate-x-[-50%] '>
-                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="https://ztmiuwqaannhjkbpxfue.supabase.co/storage/v1/object/public/gallery/teamMembers/1733204082674-1.png" className='rounded-[50%] bg-gray-400 ' />
+                                  <Image width={200} height={200} alt='Photo of raju Roy ' src="https://jocwcbzjqdlxytdxfdnl.supabase.co/storage/v1/object/public/eventgallery/profilePics/17.png" className='rounded-[50%] bg-gray-400 ' />
                               </div>
                           </div>
                           <div className='text-center mt-20'>
                               <h4 className='font-semibold text-lg'>Dipanjan Karmakar</h4>
-                              <p className='text-gray-400 text-sm'>treasurer</p>
+                              <p className='text-gray-400 text-sm'>Treasurer</p>
 
                           </div>
                           <div className=' flex justify-evenly mt-4'>

@@ -64,7 +64,7 @@ const Data = await getEvents();
     
     <div className='grid  px-4 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-3  w-full overflow-x-hidden lg:px-20'>
       {Data.map((event)=>(
-        <EventCard key={event._id} id={event._id} name={event.name} description={event.description} thumbnail={event.thumbnail}  />
+        <EventCard key={event._id} id={event._id} name={event.name} description={event.description.slice(0,60)} thumbnail={event.thumbnail}  />
       ))}
 
     </div>

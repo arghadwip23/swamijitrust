@@ -31,7 +31,7 @@ export default function Crousel() {
               <Card>
                 <CardHeader className=" aspect-video p-0">
                     <AspectRatio ratio={16/9}>
-                    <Image fill src="/eduaction_cr.jpg"  alt="photo for education" className="object-cover h-20 w-20 rounded-lg"/>
+                    <Image fill src="https://jocwcbzjqdlxytdxfdnl.supabase.co/storage/v1/object/public/eventgallery/events/pexels-tkirkgoz-11576242.jpg"  alt="photo for education" className="object-cover h-20 w-20 rounded-lg"/>
                     </AspectRatio>
                 </CardHeader>
                 <CardContent className="flex-col aspect-[4/2]  p-4">

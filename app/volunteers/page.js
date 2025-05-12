@@ -4,6 +4,7 @@ import { Breadcrumb,BreadcrumbItem,BreadcrumbLink,BreadcrumbSeparator,Breadcrumb
 import Profile from '../myComps/Profile';
 import { getVolunteer } from '@/lib/Actions';
 
+export const dynamic = "force-dynamic";
 export default async function page() {
 
 const demo =[
@@ -67,7 +68,7 @@ const members = await getVolunteer(false);
        </section>
        <section className='mt-10 py-10'>
         <h2 className='px-5 md:px-20 text-2xl font-semibold mb-3'>our members:</h2>
-        <div className='leaders grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-20'>
+        <div className='leaders grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-20'>
           {
             members.map((item,index)=>(
               <Profile key={index} name={item.name} position={item.position} email={item.email} image={item.image} />

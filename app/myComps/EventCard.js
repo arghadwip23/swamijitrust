@@ -8,13 +8,14 @@ export default function EventCard({id,name,description ,thumbnail}) {
     <div  className={`size-80  mx-auto shadow-md rounded bg-muted n absolute`}
      style={{
         backgroundImage: `linear-gradient(to top, #060202, #f0f0f000),url("${thumbnail}")`,
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundPosition: "top",
+        backgroundRepeat: "no-repeat",
       }} >
     </div>
     <div className='absolute  bottom-[18%] translate-y-[50%] left-2 p-2 '>
         <h1 className='text-white font-bold'>{name}</h1>
-        <p className='text-gray-200 text-sm'>{description}</p>
+        <p className='text-gray-200 text-sm'>{description}...</p>
         <Link href={`/events/${id}`} className='flex gap-1 align-middle  items-center text-white'>see more <ArrowRightIcon size={18} className=''/></Link>
 
       </div>

@@ -20,7 +20,13 @@ export default function Event({ params }) {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const res = await fetch(`/api/${id}`);
+        const res = await fetch(`/api/detailedEvent`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ path: id }),
+        });
         if (!res.ok) {
           throw new Error('Failed to fetch event data');
         }

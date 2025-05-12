@@ -19,7 +19,7 @@ export async function GET(req) {
     if (!data || data.length === 0) {
         return NextResponse.json({ message: 'No events found' }, { status: 404 });
     }
-    console.log(data);
+    //console.log(data);
     
     data.forEach((event) => {
 

@@ -114,18 +114,7 @@ export default function ReachUsForm() {
           </CardFooter>
         </form>
       </Form>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        toastOptions={{
-          className: '',
-          duration: 5000,
-          style: {
-            background: '#333',
-            color: '#fff',
-          },
-        }}
-      />
+      <Toaster/>
     </Card>
   )
 }

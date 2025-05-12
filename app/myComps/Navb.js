@@ -71,6 +71,24 @@ export default function Navb() {
     fetchLoginInfo();
     fetchEvents();
   }, []);
+  
+  async function logout() {
+    const res = await fetch("/api/logout",{
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.ok) {
+      setLoggedin(false);
+      window.location.href = "/";
+    } else {
+      console.error("Logout failed");
+    }
+    
+  }
 
   return (
     <div className="flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-lg w-full">
@@ -132,7 +150,7 @@ export default function Navb() {
           )}
           {loggedin && (
             <li className="px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2">
-              <Link href="/logout">Logout</Link>
+             <Button variant="outline" onClick={logout}>Log-out</Button>
             </li>
           )}
         </ul>

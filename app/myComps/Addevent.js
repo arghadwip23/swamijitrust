@@ -23,6 +23,7 @@ export default function Addevent({ user, role }) {
     eventDescription: "",
     eventType: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const [thumbnailFile, setThumbnailFile] = useState(null);
 
@@ -30,6 +31,7 @@ export default function Addevent({ user, role }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!thumbnailFile) {
       toast.error("Please upload a thumbnail.");
@@ -56,6 +58,17 @@ export default function Addevent({ user, role }) {
         error: (err) => err.message || "Failed to add event.",
       }
     );
+    setFormdata({
+      eventName: "",
+      eventSDate: "",
+      eventFDate: "",
+      eventLocation: "",
+      eventDescription: "",
+      eventType: "",
+    });
+    setThumbnailFile(null);
+    e.target.reset();
+    setLoading(false);
   };
 
   return (
@@ -107,7 +120,7 @@ export default function Addevent({ user, role }) {
 
   <div className="mt-2">
     <Label htmlFor="eventType">Event Type</Label>
-    <Select onValueChange={(value) => setFormdata({ ...formdata, eventType: value })}>
+    <Select onValueChange={(value) => setFormdata({ ...formdata, eventType: value })} required>
       <SelectTrigger id="eventType">
         <SelectValue placeholder="Select event type" />
       </SelectTrigger>
@@ -141,7 +154,7 @@ export default function Addevent({ user, role }) {
     />
   </div>
 
-  <Button className="mt-2" type="submit">Add this event</Button>
+  <Button className="mt-2" disable={loading} type="submit">Add this event</Button>
 </form>
 
     </section>

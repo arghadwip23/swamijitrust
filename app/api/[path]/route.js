@@ -13,6 +13,8 @@ export const POST = async (req, context) => {
 
         case "PicUpdate":
             return await picUpdate(formData);
+        case "sendMessage":
+            return await sendMessage(formData);
         default:
             return NextResponse.json({ message: 'Invalid path' }, { status: 400 });
     }
@@ -75,6 +77,34 @@ const enventUpload = async (formdata) => {
         event: img,
     }, { status: 200 })
 }
+
+
+
+//this is the function that will be used to send the message
+async function sendMessage(formdata) {
+    const client = await clientPromise;
+    const db = client.db('user');
+    const collection = db.collection('messages');
+    const data = {
+        name: formdata.get('name'),
+        email: formdata.get('email'),
+        message: formdata.get('message'),
+    }
+    try {
+        const result = await collection.insertOne(data);
+        return NextResponse.json({ ok: true, message: 'Message sent successfully' }, { status: 200 })
+    } catch (err) {
+        console.log(err);
+        return NextResponse.json({ ok: false, message: 'Failed to send message' }, { status: 500 })
+    }
+}
+
+
+
+
+
+
+
 
 async function picUpdate(data) {
     const file = data.get("file");

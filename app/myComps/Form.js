@@ -9,6 +9,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'
+import toast from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 
 //import { toast } from '@/components/ui/use-toast'
 
@@ -29,8 +31,24 @@ export default function ReachUsForm() {
     },
   })
 
-  const onSubmit = (data) => {
-    console.log('Form Data:', data)
+  const onSubmit = async (data) => {
+  console.log('Form Data:', data);
+
+  toast.promise(
+    fetch("/api/sendMessage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }),
+    {
+      loading: "Sending message...",
+      success: "Message sent successfully!",
+      error: "Error sending message. Please try again.",
+    }
+  );
+
     // toast({
     //   title: "Message Sent!",
     //   description: "Thank you for reaching out. We'll get back to you soon.",
@@ -96,6 +114,18 @@ export default function ReachUsForm() {
           </CardFooter>
         </form>
       </Form>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: '',
+          duration: 5000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}
+      />
     </Card>
   )
 }

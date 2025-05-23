@@ -10,12 +10,21 @@ export async function GET(req) {
 
 export async function POST(req){
     console.log("POST");
-    const data = await req.json();
+    const body = await req.json();
+
+    // 1. Extract base64-encoded response
+    const encodedResponse = body.response;
+
+    // 2. Decode base64
+    const decodedResponse = Buffer.from(encodedResponse, 'base64').toString('utf-8');
+
+    // 3. Parse the JSON
+    const parsedData = JSON.parse(decodedResponse);
     try {
        const client = await clientPromise
     const db = client.db('payments')
     const collection = db.collection('transections')
-    const result = await collection.insertOne(data)
+    const result = await collection.insertOne(parsedData)
         return NextResponse.json({status:200});
     } catch (error) {
         console.log(error);

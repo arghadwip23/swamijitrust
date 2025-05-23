@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 
 
@@ -17,17 +18,25 @@ export default function UploadImage() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await fetch('/api/sentEvents');
+        const res = await fetch('/api/sentEvents',{
+          method: 'GET',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         const data = await res.json();
-        const allEvents = [
-          ...data.Education,
-          ...data.Sports,
-          ...data.Health,
-          ...data.Awarness,
-          ...data.Social,
-          ...data.Other,
-        ];
-        setEventOptions(allEvents);
+        console.log(data);
+        
+        // const allEvents = [
+        //   ...data.Education,
+        //   ...data.Sports,
+        //   ...data.Health,
+        //   ...data.Awarness,
+        //   ...data.Social,
+        //   ...data.Other,
+        // ];
+        setEventOptions(data.allEvents);
       } catch (err) {
         console.error(err);
         toast.error('Failed to fetch event types');
@@ -82,14 +91,14 @@ export default function UploadImage() {
   return (
     <div className="p-4">
       <div className="mb-4">
-        <label htmlFor="eventType">Event Type*</label>
+        <label htmlFor="eventType">Event Name*</label>
         <select
           id="eventType"
           value={selectedEvent}
           onChange={(e) => setSelectedEvent(e.target.value)}
           className="block w-full border p-2"
         >
-          <option value="">Select event type</option>
+          <option value="">Select event</option>
           {eventOptions.map((event) => (
             <option key={event.id} value={event.id}>
               {event.name}
@@ -100,7 +109,7 @@ export default function UploadImage() {
 
       <div className="mb-4">
         <label htmlFor="caption">Caption</label>
-        <textarea
+        <Textarea
           id="caption"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
@@ -124,7 +133,7 @@ export default function UploadImage() {
       <button
         onClick={handleSubmit}
         disabled={uploading}
-        className="w-full bg-blue-600 text-white py-2"
+        className="w-full bg-orange-500 text-white py-2"
       >
         {uploading ? 'Uploading...' : 'Upload'}
       </button>

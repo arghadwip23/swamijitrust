@@ -28,10 +28,10 @@ export default function LoginPage() {
     toast.promise(loginPromise, {
       loading: "Logging you in...",
       success: (data) => {
-        router.push("/dashboard"); // Redirect on success
+        router.refresh(); // Redirect on success
         return data.message || "Login successful!";
       },
-      error: (err) => err.message || "Login failed",
+      error: (err) =>  "Login failed due to server error",
     });
   };
 

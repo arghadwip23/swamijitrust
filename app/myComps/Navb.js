@@ -28,6 +28,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
+import toast from "react-hot-toast";
+import { useUser } from "./UserContext";
+import { set } from "mongoose";
 
 const navdata = [
   { id: 1, name: "Home", link: "/", icon: <House className="mr-2" /> },
@@ -43,32 +46,40 @@ export default function Navb() {
   const [eventCategory, setEventCategory] = useState([]);
 
   const path = usePathname();
-
+  const {user} = useUser();
   useEffect(() => {
-    const fetchLoginInfo = async () => {
-      try {
-        const res = await fetch("/api/sentNavData");
-        const data = await res.json();
-        setLoggedin(data.isLoggedin);
-      } catch (err) {
-        console.error("Login fetch error:", err);
-      }
-    };
+    // const fetchLoginInfo = async () => {
+    //   try {
+    //     const res = await fetch("/api/sentNavData");
+    //     const data = await res.json();
+    //     setLoggedin(data.isLoggedin);
+    //   } catch (err) {
+    //     console.error("Login fetch error:", err);
+    //   }
+    // };
 
     const fetchEvents = async () => {
       try {
         const res = await fetch("/api/sentEvents");
         const data = await res.json();
-        setEvents(data);
-        setEventCategory(Object.keys(data));
+        if (!data.ok) {
+          //console.error("Failed to fetch events");
+          toast.error("Failed to fetch events");
+          
+        }else{
+        setEvents(data.result);
+        setEventCategory(Object.keys(data.result));
         //await console.log(data["Awarness"]);
-        
+        }
       } catch (err) {
         console.error("Event fetch error:", err);
       }
     };
 
-    fetchLoginInfo();
+   // fetchLoginInfo();
+   setLoggedin(user);
+   console.log(user);
+   
     fetchEvents();
   }, []);
   
@@ -103,7 +114,7 @@ export default function Navb() {
       {/* Desktop Menu */}
       <nav>
         <ul className="hidden md:flex">
-          {navdata.map((item) =>
+          {navdata && navdata.map((item) =>
             item.name === "Events" ? (
               <li key={item.id} className="px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2">
                 <DropdownMenu>
@@ -115,7 +126,7 @@ export default function Navb() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white">
                     <DropdownMenuGroup className="p-2">
-                      {eventCategory.map((category) => (
+                      {eventCategory && eventCategory.map((category) => (
                         <DropdownMenuSub key={category}>
                           <DropdownMenuSubTrigger className="flex justify-between items-center w-full">
                             {category}

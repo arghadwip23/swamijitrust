@@ -10,7 +10,7 @@ import Body from "./myComps/Body";
 export default function Home() {
   return (
     <>
-      <Navb />
+  
       <Hero />
       <Crousel/>
       <Why/>

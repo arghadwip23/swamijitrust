@@ -119,10 +119,10 @@ export default function Navb() {
               <li key={item.id} className="px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="link" className={`p-0 ${path.includes(item.link) ? "text-orange-500" : "text-black"}`}>
+                    <Link  href="/events" className={`flex p-0 ${path.includes(item.link) ? "text-orange-500" : "text-black"}`}>
                       {item.name}
                       <ChevronDown />
-                    </Button>
+                    </Link>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white">
                     <DropdownMenuGroup className="p-2">
@@ -144,6 +144,7 @@ export default function Navb() {
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
                       ))}
+
                     </DropdownMenuGroup>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -158,7 +159,10 @@ export default function Navb() {
                 <Link href={item.link}>{item.name}</Link>
               </li>
             )
+            
           )}
+          <li  className="px-4 flex items-center bg-orange-500 font-semibold hover:bg-orange-50 rounded-md py-2 hover:text-black text-white m-1"> <Link href={"/donate "}>Donate Us </Link> </li>
+
           {loggedin && (
             <li className="px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2">
              <Button variant="outline" onClick={logout}>Log-out</Button>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Addevent from "../myComps/Addevent";
 import { Toaster, toast } from "react-hot-toast";
 import UploadImage from "../myComps/UploadImage";
-import { Pencil,CalendarPlus,Upload,UserPen,Trash2} from "lucide-react";
+import { Pencil,CalendarPlus,Upload,UserPen,Trash2,MessageCircleHeart} from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -24,6 +24,8 @@ export default function Dashboard() {
   const [role, setRole] = useState({});
   const [file, setFile] = useState(null);
   const [allUsers, setAllUsers] = useState([]);
+  const [messages,setMessages] = useState([]);
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -55,8 +57,30 @@ export default function Dashboard() {
       }
     };
 
+
+  const fetchMessage = async() =>{
+    try {
+
+     const res = await fetch("/api/getMessage",{
+          method: "GET",
+          cache: "no-cache",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        setMessages(data.message);
+
+      
+    } catch (error) {
+       console.error("Error fetching messages:", err);
+        toast.error("Failed to fetch message");
+    }
+  }  
     fetchAllUsers();
     fetchUser();
+    fetchMessage();
+
   }, []);
   
 
@@ -175,6 +199,7 @@ export default function Dashboard() {
           </Dialog>
         </div>
         {role.isAdmin && (
+          <>
           <div>
           <Dialog className="w-[800px]">
             <DialogTrigger className="bg-orange-500 text-white px-4 py-2 rounded-md inline-flex gap-2">
@@ -216,6 +241,43 @@ export default function Dashboard() {
             </DialogContent>
           </Dialog>
         </div>
+        <div>
+          <Dialog>
+           <DialogTrigger className="bg-orange-500 text-white px-4 py-2 rounded-md inline-flex gap-2">
+               <MessageCircleHeart /> See Messages
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>See messages from users</DialogTitle>
+                <DialogDescription>you can see the feedback from the users here</DialogDescription>
+              </DialogHeader>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px]">Sl no.</TableHead>
+                    <TableHead className="w-[100px]">Name</TableHead>
+                    <TableHead className="w-[100px]">Email</TableHead>
+                    <TableHead className="w-[100px]">message</TableHead>
+                   
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {messages.map((message,index) => (
+                    <TableRow key={index}>
+                      <TableCell>{index+1}</TableCell>
+                      <TableCell>{message.name}</TableCell>
+                      <TableCell>{message.email}</TableCell>
+                      <TableCell>{message.message}</TableCell>
+                     
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </DialogContent>
+          </Dialog>
+
+        </div>
+        </>
       )}
 
       <div>

@@ -57,7 +57,7 @@ export default function ReachUsForm() {
   }
 
   return (
-    <Card className="max-w-lg mx-auto ">
+    <Card className="">
       
 
       <Form {...form}>

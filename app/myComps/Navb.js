@@ -36,8 +36,9 @@ const navdata = [
   { id: 1, name: "Home", link: "/", icon: <House className="mr-2" /> },
   { id: 2, name: "Events", link: "/events", icon: <House className="mr-2" /> },
   { id: 3, name: "Volunteers", link: "/volunteers", icon: <House className="mr-2" /> },
-  { id: 4, name: "About", link: "/about", icon: <ShoppingCart className="mr-2" /> },
+  { id: 4, name: "About-Us", link: "/about", icon: <ShoppingCart className="mr-2" /> },
   { id: 5, name: "Contact", link: "/contact", icon: <House className="mr-2" /> },
+  
 ];
 
 export default function Navb() {
@@ -102,13 +103,13 @@ export default function Navb() {
   }
 
   return (
-    <div className="flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-lg w-full">
+    <div className="flex justify-between px-4 pt-2 items-center fixed z-50 backdrop-blur-lg  w-full">
       <Image
         src="/swamijiLogo.png"
         alt="Logo"
         width={50}
         height={50}
-        className="rounded-md object-contain"
+        className="rounded-md object-contain  p-1"
       />
 
       {/* Desktop Menu */}
@@ -119,7 +120,7 @@ export default function Navb() {
               <li key={item.id} className="px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Link  href="/events" className={`flex p-0 ${path.includes(item.link) ? "text-orange-500" : "text-black"}`}>
+                    <Link  href="/events" className={`flex textShadow p-0 ${path.includes(item.link) ? "text-orange-500" : "text-black"}`}>
                       {item.name}
                       <ChevronDown />
                     </Link>
@@ -152,7 +153,7 @@ export default function Navb() {
             ) : (
               <li
                 key={item.id}
-                className={`px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2 ${
+                className={`px-4 flex items-center font-semibold hover:bg-orange-50 rounded-md py-2 textShadow ${
                   path === item.link ? "text-orange-500" : "text-black"
                 }`}
               >
@@ -174,8 +175,8 @@ export default function Navb() {
       {/* Mobile Menu */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="lg" className="md:hidden p-0">
-            <Menu className="text-orange-500 h-8 w-8 font-semibold" />
+          <Button variant="ghost" size="lg" className="md:hidden p-0 bg-white px-2">
+            <Menu className="text-orange-500 h-8 w-8 font-semibold " />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>

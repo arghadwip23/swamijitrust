@@ -10,7 +10,7 @@ import ReachUsForm from './Form'
 export default function Body() {
     return (
         <>
-            <section className='mb-3 mt-20 lg:px-4 w-full overflow-x-hidden'>
+            <section className='mb-3 mt-20 lg:px-4 w-full overflow-x-hidden '>
                 <div className='flex gap-2'>
                     <div className='hidden md:flex  w-[50vw] pl-4 '>
                         <AspectRatio ratio={4 / 3} className='w-full rounded-md bg-muted'>
@@ -49,6 +49,30 @@ export default function Body() {
                     </div>
                 </div>
             </section>
+
+{/* <!-- Mission and Vision Section --> */}
+ <section className="text-center bg-gradient-to-r from-orange-400 to-orange-700 text-white mt-10  p-4 py-10 md:p-12">
+          <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
+          <p className="text-xl mb-6 max-w-4xl mx-auto">
+            Swamiji Trust is more than an organization—we are a family united by the shared belief that every individual deserves a chance to succeed. Whether you choose to volunteer your time, donate resources, or simply spread awareness about our cause, you become part of a movement that is transforming lives and building stronger communities.
+          </p>
+          <p className="text-lg italic mb-8">
+            "Service to humanity is service to divinity" - This principle guides everything we do at Swamiji Trust.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-white text-green-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+              Join Our Mission
+            </button>
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-800 transition duration-300">
+              Donate Now
+            </button>
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-800 transition duration-300">
+              Volunteer With Us
+            </button>
+          </div>
+        </section>
+  
+
             <section className='mt-20 text-center'>
                 <h2 className='text-3xl font-bold'>Our Team</h2>
                 <div className='grid  px-4 md:grid-cols-3 mt-10 gap-3  w-full overflow-x-hidden'>
@@ -120,7 +144,9 @@ export default function Body() {
                 </div>
                 <Button className="mt-10" variant="link" >know more about our team <ArrowRight /> </Button>
             </section>
-            <section id='feedbac' className='mt-20 lg:mx-4 lg:rounded-md md:pr-4 bg-gradient-to-b from-orange-500 from-50% to-white to-50% py-4 border w-full'>
+
+
+            <section id='feedback' className='mt-20 mx-auto lg:mx-4 lg:rounded-md md:pr-4 bg-gradient-to-b from-orange-500 from-50% to-white to-50% py-4 border '>
 
                 <div className='grid md:grid-cols-2 '>
                     <div className='flex flex-col align-middle justify-evenly items-center md:pb-8'>

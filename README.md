@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🕉️ Swamiji Cultural Trust Website
 
-## Getting Started
+[![Live Site](https://img.shields.io/badge/Live-Vercel-000?logo=vercel&logoColor=white)](https://swamijitrust.vercel.app)
+[![Build With](https://img.shields.io/badge/Built%20With-Next.js-blue?logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Styled%20With-Tailwind%20CSS-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/arghadwip23/swamijitrust)](https://github.com/arghadwip23/swamijitrust/commits/main)
 
-First, run the development server:
+> 🌟 A modern, responsive website for the Swamiji Cultural Trust — honoring heritage with modern technology.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 Live Demo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+👉 **[Visit the Site](https://swamijitrust.vercel.app)**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📚 About the Project
 
-To learn more about Next.js, take a look at the following resources:
+This project is a complete redesign and development of the official website for the Swamiji Cultural Trust. It showcases activities, initiatives, and cultural values in a clean, mobile-friendly, and performant web experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Tech Stack
 
-## Deploy on Vercel
+| Category       | Tools Used                             |
+|----------------|----------------------------------------|
+| Frontend       | [Next.js](https://nextjs.org/), React |
+| Styling        | [Tailwind CSS](https://tailwindcss.com/) |
+| Deployment     | [Vercel](https://vercel.com)           |
+| Tooling        | ESLint, Prettier, PostCSS              |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Features
 
+- 📱 **Responsive Design** – Works on all devices
+- ⚡ **Fast & SEO-Friendly** – Powered by Next.js
+- 🧩 **Reusable Components** – Organized code structure
+- ☁️ **Deployed on Vercel** – CI/CD enabled
 
+---

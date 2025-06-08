@@ -1,4 +1,4 @@
-# 🕉️ Swamiji Cultural Trust Website
+#  Swamiji Cultural Trust Website
 
 [![Live Site](https://img.shields.io/badge/Live-Vercel-000?logo=vercel&logoColor=white)](https://swamijitrust.vercel.app)
 [![Build With](https://img.shields.io/badge/Built%20With-Next.js-blue?logo=next.js)](https://nextjs.org/)
